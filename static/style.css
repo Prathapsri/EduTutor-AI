@@ -1,0 +1,315 @@
+
+:root {
+    --navy: #172554;
+    --blue: #4f46e5;
+    --purple: #7c3aed;
+    --muted: #64748b;
+    --background: #f6f7ff;
+    --white: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: var(--navy);
+    background: var(--background);
+}
+
+.navbar {
+    height: 76px;
+    padding: 0 8%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--white);
+    border-bottom: 1px solid #e8eaf5;
+}
+
+.brand {
+    color: var(--navy);
+    font-size: 23px;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.brand span {
+    color: var(--purple);
+}
+
+.nav-label {
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    color: var(--muted);
+}
+
+main {
+    width: min(1050px, 90%);
+    margin: auto;
+}
+
+.hero {
+    text-align: center;
+    padding: 75px 10px 40px;
+}
+
+.eyebrow {
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.hero h1 {
+    margin: 20px 0;
+    font-size: clamp(42px, 6vw, 68px);
+    line-height: 1.08;
+    letter-spacing: -2px;
+}
+
+.hero h1 span {
+    color: var(--purple);
+}
+
+.hero > p {
+    max-width: 600px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+.features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 25px;
+    margin-top: 28px;
+    font-size: 14px;
+}
+
+.features span {
+    color: #334155;
+}
+
+.upload-card {
+    max-width: 680px;
+    margin: 10px auto 75px;
+    padding: 35px;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid #e4e7f3;
+    border-radius: 22px;
+    box-shadow: 0 15px 45px #2635750b;
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    display: grid;
+    place-items: center;
+    margin: auto;
+    border-radius: 15px;
+    background: #ede9fe;
+    color: var(--purple);
+    font-size: 28px;
+}
+
+.upload-card h2 {
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.upload-card > p {
+    color: var(--muted);
+    font-size: 14px;
+}
+
+.drop-zone {
+    margin: 25px 0 16px;
+    min-height: 165px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: #fafaff;
+    border: 2px dashed #c7c5f8;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.upload-icon {
+    font-size: 30px;
+}
+
+.drop-zone strong {
+    overflow-wrap: anywhere;
+}
+
+.drop-zone span:last-of-type {
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.drop-zone input {
+    max-width: 100%;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+.primary-button {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    border-radius: 10px;
+    background: var(--blue);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.primary-button:hover {
+    background: #4338ca;
+}
+
+.message {
+    margin-top: 18px;
+    padding: 13px;
+    border-radius: 9px;
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.privacy-note {
+    margin-top: 22px;
+    color: var(--muted);
+    font-size: 12px;
+}
+
+.next-section {
+    padding-bottom: 65px;
+}
+
+.next-section > h2 {
+    text-align: center;
+    font-size: 28px;
+}
+
+.journey-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 25px;
+}
+
+.journey-grid article {
+    padding: 22px;
+    background: white;
+    border: 1px solid #e4e7f3;
+    border-radius: 15px;
+}
+
+.journey-grid article > span {
+    color: var(--purple);
+    font-size: 12px;
+    font-weight: 800;
+}
+
+.journey-grid h3 {
+    margin-bottom: 8px;
+}
+
+.journey-grid p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+footer {
+    padding: 25px;
+    text-align: center;
+    color: var(--muted);
+    background: white;
+    font-size: 12px;
+}
+
+@media (max-width: 700px) {
+    .navbar {
+        padding: 0 5%;
+    }
+
+    .nav-label {
+        font-size: 9px;
+    }
+
+    .hero {
+        padding-top: 50px;
+    }
+
+    .features {
+        gap: 12px;
+    }
+
+    .upload-card {
+        padding: 22px;
+    }
+
+    .journey-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 400px) {
+    .journey-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+.extracted-content {
+    margin-top: 25px;
+    padding: 22px;
+    text-align: left;
+    background: white;
+    border: 1px solid #e4e7f3;
+    border-radius: 15px;
+}
+
+.extracted-content h3 {
+    margin-top: 0;
+}
+
+.extracted-content p {
+    color: var(--muted);
+    font-size: 13px;
+}
+
+.extracted-content pre {
+    max-height: 350px;
+    overflow: auto;
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    padding: 15px;
+    border-radius: 8px;
+    background: #f6f7ff;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
