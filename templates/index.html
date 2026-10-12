@@ -4,83 +4,348 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EduTutor AI | Your Personal AI Tutor</title>
+    <meta name="theme-color" content="#f6f8fc">
+    <title>{% block title %}EduTutor AI{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
+
 <body>
     <header class="navbar">
-        <a href="/" class="brand"><span>✦</span> EduTutor AI</a>
+        <a href="/" class="brand">
+            <span class="brand-icon">✦</span>
+            <span>EduTutor<span class="brand-ai">AI</span></span>
+        </a>
+
         <span class="nav-label">PERSONALIZED LEARNING</span>
     </header>
 
     <main>
         <section class="hero">
-            <div class="eyebrow">YOUR PERSONAL AI STUDY COMPANION</div>
-            <h1>Learn smarter.<br><span>Grow faster.</span></h1>
-            <p>Upload your study materials and get ready for a learning experience
-               that adapts to you.</p>
+            <div class="hero-content">
+                <span class="eyebrow">YOUR PERSONAL AI STUDY COMPANION</span>
 
-            <div class="features">
-                <div>📚 <span>Study your materials</span></div>
-                <div>🤖 <span>Learn with AI</span></div>
-                <div>📈 <span>Track your progress</span></div>
+                <h1>
+                    Learn smarter.<br>
+                    <span>Grow faster.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Your study materials, your personal AI tutor, your learning
+                    path. Upload your resources and start learning at your own pace.
+                </p>
+
+                <div class="hero-features">
+                    <span>📚 Learn from your materials</span>
+                    <span>🤖 Ask questions</span>
+                    <span>📈 Improve your skills</span>
+                </div>
+
+                <a href="#upload" class="button button-primary hero-button">
+                    Start learning <span>→</span>
+                </a>
+            </div>
+
+            <div class="hero-visual" aria-hidden="true">
+                <div class="visual-orbit orbit-one"></div>
+                <div class="visual-orbit orbit-two"></div>
+
+                <div class="visual-center">
+                    <span class="visual-sparkle">✦</span>
+                    <span class="visual-title">Learn</span>
+                    <span class="visual-subtitle">Understand. Practice. Grow.</span>
+                </div>
+
+                <div class="floating-card floating-card-top">
+                    <span class="floating-icon">📖</span>
+                    <div>
+                        <strong>Your materials</strong>
+                        <small>One place to learn</small>
+                    </div>
+                </div>
+
+                <div class="floating-card floating-card-bottom">
+                    <span class="floating-icon">🤖</span>
+                    <div>
+                        <strong>AI Tutor</strong>
+                        <small>Answers made simple</small>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <section class="upload-card">
-            <div class="card-icon">↑</div>
-            <h2>Start with your study materials</h2>
-            <p>Upload a textbook, presentation, notes or study document.</p>
+        <section class="section upload-section" id="upload">
+            <div class="section-heading">
+                <span class="section-kicker">STEP 01</span>
+                <h2>Upload your study materials</h2>
+                <p>
+                    Start by adding a textbook, presentation, notes or document.
+                </p>
+            </div>
 
-            <form action="/upload" method="POST" enctype="multipart/form-data">
-                <label for="file" class="drop-zone">
-                    <span class="upload-icon">📄</span>
-                    <strong id="file-name">Choose a file to upload</strong>
-                    <span>PDF, PPTX, DOCX or TXT · Maximum 50 MB</span>
-                    <input type="file" id="file" name="file"
-                           accept=".pdf,.pptx,.docx,.txt" required>
-                </label>
-                <button type="submit" class="primary-button">Upload study material →</button>
-            </form>
+            <div class="panel upload-panel">
+                <div class="panel-icon">📚</div>
+
+                <h3>Build your personal knowledge base</h3>
+                <p class="panel-description">
+                    EduTutor AI will read your material so you can search it
+                    and ask questions about its content.
+                </p>
+
+                <form action="/upload" method="POST" enctype="multipart/form-data"
+                      class="upload-form">
+                    <label for="file" class="file-drop-zone">
+                        <span class="upload-symbol">↑</span>
+                        <strong id="file-label">Choose a file to upload</strong>
+                        <span class="file-types">
+                            PDF, PPTX, DOCX or TXT · Maximum 50 MB
+                        </span>
+                        <span class="file-browse">Browse files</span>
+                    </label>
+
+                    <input
+                        type="file"
+                        id="file"
+                        name="file"
+                        accept=".pdf,.pptx,.docx,.txt"
+                        required
+                    >
+
+                    <button type="submit" class="button button-primary upload-button">
+                        Upload and process material <span>→</span>
+                    </button>
+                </form>
+
+                <p class="privacy-note">
+                    🔒 Your learning journey starts with your own materials.
+                </p>
+            </div>
 
             {% if message %}
-            <div class="message {{ message_type }}">{{ message }}</div>
+            <div class="message {{ message_type or 'info' }}" role="status">
+                <span class="message-symbol">
+                    {% if message_type == 'success' %}✓{% else %}ⓘ{% endif %}
+                </span>
+                <span>{{ message }}</span>
+            </div>
             {% endif %}
 
-            
-{% if extracted_text %}
-<div class="extracted-content">
-    <h3>📚 Extracted Study Material</h3>
-    <p>{{ character_count }} characters extracted from {{ uploaded_filename }}.</p>
-    <pre>{{ extracted_text }}</pre>
-</div>
-{% endif %}
+            {% if uploaded_filename %}
+            <div class="panel document-panel">
+                <div class="document-heading">
+                    <span class="document-icon">📄</span>
+                    <div>
+                        <h3>{{ uploaded_filename }}</h3>
+                        <p>Document processed successfully</p>
+                    </div>
+                </div>
 
+                <div class="document-stats">
+                    <div class="stat">
+                        <strong>{{ character_count }}</strong>
+                        <span>Characters extracted</span>
+                    </div>
+                    <div class="stat">
+                        <strong>{{ indexed_count }}</strong>
+                        <span>Searchable passages</span>
+                    </div>
+                </div>
+            </div>
+            {% endif %}
 
-            <div class="privacy-note">🔒 Your learning journey starts with your own materials.</div>
+            {% if extracted_text %}
+            <details class="panel extracted-panel">
+                <summary>Preview extracted text</summary>
+                <pre class="extracted-text">{{ extracted_text }}</pre>
+            </details>
+            {% endif %}
         </section>
 
-        <section class="next-section">
-            <h2>Your learning journey</h2>
+        <section class="section tutor-section" id="tutor">
+            <div class="section-heading">
+                <span class="section-kicker">STEP 02</span>
+                <h2>Ask your AI study tutor</h2>
+                <p>
+                    Ask a question about the materials you have uploaded.
+                    Get an explanation based on relevant passages.
+                </p>
+            </div>
+
+            <div class="panel tutor-panel">
+                <div class="tutor-panel-heading">
+                    <div class="tutor-avatar">✦</div>
+                    <div>
+                        <h3>EduTutor AI</h3>
+                        <p>Your personal learning companion</p>
+                    </div>
+                    <span class="online-indicator">
+                        <span></span> Ready to help
+                    </span>
+                </div>
+
+                <form action="/ask" method="POST" class="question-form">
+                    <label for="question">What would you like to learn?</label>
+
+                    <textarea
+                        id="question"
+                        name="question"
+                        rows="4"
+                        maxlength="2000"
+                        placeholder="For example: Explain the system design in simple words..."
+                        required
+                    >{{ question or '' }}</textarea>
+
+                    {% if question_error %}
+                    <p class="field-error">{{ question_error }}</p>
+                    {% endif %}
+
+                    <div class="question-form-footer">
+                        <span class="input-hint">
+                            Answers use your retrieved study materials.
+                        </span>
+
+                        <button type="submit" class="button button-primary">
+                            Ask EduTutor AI <span>→</span>
+                        </button>
+                    </div>
+                </form>
+
+                {% if ai_answer %}
+                <section class="answer-card" aria-labelledby="answer-title">
+                    <div class="answer-heading">
+                        <div class="answer-avatar">✦</div>
+                        <div>
+                            <span class="answer-kicker">YOUR PERSONAL EXPLANATION</span>
+                            <h3 id="answer-title">Here's your answer</h3>
+                        </div>
+                    </div>
+
+                    <div class="ai-answer">{{ ai_answer }}</div>
+
+                    <p class="answer-note">
+                        This AI-generated explanation is based on the retrieved
+                        passages shown below. Review the cited slides or pages
+                        to check the original context.
+                    </p>
+                </section>
+                {% endif %}
+
+                {% if ai_error %}
+                <div class="message error" role="alert">
+                    <span class="message-symbol">!</span>
+                    <span>{{ ai_error }}</span>
+                </div>
+                {% endif %}
+
+                {% if no_results %}
+                <div class="empty-state">
+                    <span class="empty-icon">🔎</span>
+                    <h3>No relevant passages found</h3>
+                    <p>
+                        Upload your study materials first, or try asking
+                        the question using different words.
+                    </p>
+                </div>
+                {% endif %}
+
+                {% if search_results %}
+                <div class="results-section">
+                    <div class="results-heading">
+                        <div>
+                            <span class="section-kicker">SOURCE MATERIAL</span>
+                            <h3>Relevant passages</h3>
+                        </div>
+                        <span class="result-count">
+                            {{ search_results|length }} found
+                        </span>
+                    </div>
+
+                    <p class="results-description">
+                        These are the passages retrieved for your question.
+                        Similarity scores indicate text matching, not answer accuracy.
+                    </p>
+
+                    <div class="results-list">
+                        {% for result in search_results %}
+                        <article class="result-card">
+                            <div class="result-card-heading">
+                                <span class="result-source-icon">📖</span>
+                                <strong>{{ result.source }}</strong>
+                                <span class="similarity">
+                                    {{ result.score }}% match
+                                </span>
+                            </div>
+
+                            <p class="result-text">{{ result.text }}</p>
+                        </article>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </section>
+
+        <section class="section journey-section" id="journey">
+            <div class="section-heading">
+                <span class="section-kicker">YOUR LEARNING JOURNEY</span>
+                <h2>A smarter way to study</h2>
+                <p>
+                    Learn at your own pace with a workflow built around
+                    your study materials.
+                </p>
+            </div>
+
             <div class="journey-grid">
-                <article><span>01</span><h3>Upload</h3><p>Add your learning materials.</p></article>
-                <article><span>02</span><h3>Ask & Learn</h3><p>Get explanations grounded in your sources.</p></article>
-                <article><span>03</span><h3>Practice</h3><p>Test yourself with personalized quizzes.</p></article>
-                <article><span>04</span><h3>Improve</h3><p>Discover topics that need more practice.</p></article>
+                <article class="journey-card">
+                    <div class="journey-icon icon-purple">📚</div>
+                    <h3>Upload</h3>
+                    <p>Add your notes, textbooks and presentations.</p>
+                    <span class="journey-number">01</span>
+                </article>
+
+                <article class="journey-card">
+                    <div class="journey-icon icon-blue">🔎</div>
+                    <h3>Explore</h3>
+                    <p>Find relevant information in your materials.</p>
+                    <span class="journey-number">02</span>
+                </article>
+
+                <article class="journey-card">
+                    <div class="journey-icon icon-orange">🤖</div>
+                    <h3>Understand</h3>
+                    <p>Get AI-generated explanations grounded in retrieved text.</p>
+                    <span class="journey-number">03</span>
+                </article>
+
+                <article class="journey-card">
+                    <div class="journey-icon icon-green">🌱</div>
+                    <h3>Improve</h3>
+                    <p>Review source material and build your understanding.</p>
+                    <span class="journey-number">04</span>
+                </article>
             </div>
         </section>
     </main>
 
-    <footer>EduTutor AI · Learn Smarter. Get Personalized. Improve Faster.</footer>
+    <footer class="footer">
+        <a href="/" class="brand footer-brand">
+            <span class="brand-icon">✦</span>
+            <span>EduTutor<span class="brand-ai">AI</span></span>
+        </a>
+
+        <p>Learn smarter. Grow faster.</p>
+        <span class="footer-caption">PERSONALIZED LEARNING</span>
+    </footer>
 
     <script>
         const fileInput = document.getElementById("file");
-        const fileName = document.getElementById("file-name");
+        const fileLabel = document.getElementById("file-label");
 
         fileInput.addEventListener("change", function () {
-            fileName.textContent = this.files.length
-                ? this.files[0].name
-                : "Choose a file to upload";
+            if (this.files && this.files.length > 0) {
+                fileLabel.textContent = this.files[0].name;
+            } else {
+                fileLabel.textContent = "Choose a file to upload";
+            }
         });
     </script>
 </body>
