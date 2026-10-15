@@ -6,7 +6,7 @@ EduTutor AI is a web-based learning assistant designed to help students study mo
 
 ## 🎥 Demo Video
 
-[Watch the EduTutor AI Demo on YouTube](https://youtu.be/Gs7R3BBPaI4)
+Video Link:https://youtu.be/Gs7R3BBPaI4
 
 ## ✨ Features
 
