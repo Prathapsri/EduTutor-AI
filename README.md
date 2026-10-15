@@ -6,17 +6,16 @@ EduTutor AI is a web-based learning assistant designed to help students study mo
 
 ## 🎥 Demo Video
 
-https://youtu.be/Gs7R3BBPaI4
-
+[Watch the EduTutor AI Demo on YouTube](https://youtu.be/Gs7R3BBPaI4)
 
 ## ✨ Features
 
-- **📚 Document Upload:** Upload study materials in PDF, PPTX, DOCX, and TXT formats.
-- **🤖 AI Tutor:** Ask questions related to your uploaded learning materials.
-- **📝 Practice Quiz Generator:** Generate practice questions with configurable question counts and difficulty levels.
-- **📖 Study Summaries:** Create concise summaries to support revision.
-- **🔎 Relevant Content Retrieval:** Use text retrieval techniques to find relevant passages from uploaded documents.
-- **💻 Simple Web Interface:** Access the learning tools through a Flask-based web application.
+- 📚 **Document Upload:** Upload study materials in PDF, PPTX, DOCX, and TXT formats.
+- 🤖 **AI Tutor:** Ask questions related to uploaded learning materials.
+- 📝 **Practice Quiz Generator:** Generate practice questions to test understanding.
+- 📖 **Study Summaries:** Create concise revision notes.
+- 🔎 **Relevant Content Retrieval:** Find relevant passages using text retrieval techniques.
+- 💻 **Simple Web Interface:** Access the tools through a Flask-based web application.
 
 *Note: AI-generated features require a correctly configured and running language model.*
 
@@ -24,21 +23,19 @@ https://youtu.be/Gs7R3BBPaI4
 
 - Python
 - Flask
-- HTML
-- CSS
-- JavaScript
+- HTML, CSS, and JavaScript
 - TF-IDF Vectorization
 - Cosine Similarity
 - Document Processing Libraries
-- Ollama and Llama 3.2 3B (for local AI integration, when configured)
+- Ollama and Llama 3.2 3B (if configured and used)
 
 ## 🧠 How It Works
 
 1. **Upload:** The student uploads a supported study document.
 2. **Extract:** The application extracts text from the document.
 3. **Chunk:** The text is divided into smaller passages.
-4. **Retrieve:** TF-IDF and cosine similarity help identify passages relevant to a question.
-5. **Generate:** The configured language model can use the relevant content to produce answers, quizzes, and summaries.
+4. **Retrieve:** TF-IDF and cosine similarity help identify relevant passages.
+5. **Generate:** A configured language model can use relevant content to generate answers, quizzes, and summaries.
 
 ## ⚙️ Installation and Setup
 
@@ -46,7 +43,7 @@ https://youtu.be/Gs7R3BBPaI4
 
 - Python 3.10 or newer
 - Git
-- Ollama, if using the local language model configuration
+- Ollama, if using the local language model
 
 ### 1. Clone the repository
 
@@ -57,14 +54,14 @@ cd EduTutor-AI
 
 ### 2. Create a virtual environment
 
-**Windows:**
+On Windows:
 
 ```powershell
 python -m venv venv
 .\venv\Scripts\Activate.ps1
 ```
 
-If PowerShell blocks activation, use Command Prompt and run:
+If you use Command Prompt instead:
 
 ```bat
 venv\Scripts\activate.bat
@@ -72,7 +69,7 @@ venv\Scripts\activate.bat
 
 ### 3. Install dependencies
 
-If the repository contains a `requirements.txt` file, run:
+If the repository includes `requirements.txt`, run:
 
 ```bash
 pip install -r requirements.txt
@@ -80,13 +77,13 @@ pip install -r requirements.txt
 
 ### 4. Configure the AI model
 
-For a local Ollama setup, install Ollama and download the model:
+For a local Ollama setup, download the model:
 
 ```bash
 ollama pull llama3.2:3b
 ```
 
-Configure the environment variables according to your application's implementation. For example, if your code uses an OpenAI-compatible Ollama endpoint:
+If your application uses the OpenAI-compatible Ollama API, the environment configuration may look like this:
 
 ```dotenv
 OPENAI_API_KEY=ollama
@@ -94,7 +91,7 @@ OPENAI_BASE_URL=http://localhost:11434/v1
 OPENAI_MODEL=llama3.2:3b
 ```
 
-Make sure your Python code reads these variables and passes the base URL to the AI client. Do not commit API keys or other secrets to GitHub.
+Ensure your Python code reads these variables and passes the base URL to the AI client. Do not upload API keys or secrets to GitHub.
 
 ### 5. Run the application
 
@@ -102,7 +99,7 @@ Make sure your Python code reads these variables and passes the base URL to the 
 python app.py
 ```
 
-Open the local URL displayed in your terminal, commonly:
+Open the local URL printed in the terminal, commonly:
 
 `http://127.0.0.1:5000`
 
@@ -122,7 +119,7 @@ Open the local URL displayed in your terminal, commonly:
 - Answers with source references
 - User accounts and personalized learning history
 - Multilingual learning support
-- Improved quiz evaluation and learning recommendations
+- Improved quizzes and personalized learning recommendations
 
 ## 🎯 Project Goal
 
@@ -132,7 +129,7 @@ Our goal is to make studying more interactive, organized, and accessible by help
 
 **Team Name:** Team Phoneix
 
-**Project:** EduTutor AI – Personalized Adaptive Learning Companion
+**Project Name:** EduTutor AI – Personalized Adaptive Learning Companion
 
 ## 📌 Project Repository
 
